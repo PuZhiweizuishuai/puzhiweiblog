@@ -154,23 +154,15 @@ footer:
 
 ## 添加地址栏图片
 
-这里以next主题举例
-首先进入到
-```
-themes\next\source\css\_common\components\header
-```
-目录下，打开header.styl
-修改
+加入后就可以在浏览器的标签栏或者是收藏夹里面现实网站的缩略图标了。 
+在themes/next/的_config.yml中配置：
 
 ```
-.header { background: $head-bg; }
+Put your favicon.ico into `hexo-site/source/` directory.
+ favicon: /images/favicon.ico
 ```
 
-为
-
-```
-.header { background: url(‘图片链接’); }
-```
+然后把图标放到根目录的source/images/下面。
 
 ## 添加文章末尾的版权声明
 
