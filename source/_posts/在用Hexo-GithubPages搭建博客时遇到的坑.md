@@ -5,7 +5,8 @@ tags: [Hexo,
       GitHub,
       博客]
 categories: "学习记录"
-
+copyright: true
+top: 100
 ---
 
 <img src="http://7xjjdc.com1.z0.glb.clouddn.com/Hexotite.png" alt="hexo+github"/>
@@ -218,6 +219,48 @@ passage_end_tag:
   enabled: true
 ```
 
+## 换电脑了怎么办
+
+我查找了网上很多教程，最后采用了新建一个仓库，保存原文件的做法
+具体如下
+由于在建立博客时账号设置什么的你应该已经搞定了，我就不多说了
+接下来只必要的和可能遇到的错误
+
+建立远程库
+这个很简单，我也就不写了
+直接从建立本地库开始
+
+1.找到博客所在的文件夹
+
+2.git init （在本机上新建一个git仓库）
+
+3.git add -A (将文件的修改，文件的删除，文件的新建，添加到暂存区,即保存所有的修改)
+
+4.git remote add origin xxxxxxxxx xxxxxx 就是你仓库的地址，具体的地址可以去Github上copy。关联远程仓库。
+
+5.git commit -m “firstCommit” （提交文件，将暂存区的内容提交至Git本地数据库）
+
+6.git pull --rebase origin master 更新远程更新到本地
+
+7.git push origin master（git push -u origin master） 将本地repo于远程的origin的repo合并，第一次用-u，系统要求输入账号密码
+此时可能会出现如下错误
+
+```
+To github.com:PuZhiweizuishuai/puzhiweiblog.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'git@github.com:PuZhiweizuishuai/puzhiweiblog.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+```
+
+解决方案为：git push origin master -f，强行让本地分支覆盖远程分支。
+
+8. git push origin master（上传代码到master分支）
+
+这样换电脑后直接克隆这个仓库里的文件，重新安装运行环境就行了
 
 
 ## End
