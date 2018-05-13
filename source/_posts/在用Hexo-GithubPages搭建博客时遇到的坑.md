@@ -19,6 +19,7 @@ top: 100
 <a href="https://hexo.io/zh-cn/docs/index.html">Hexo中文文档</a>
 <a href="http://theme-next.iissnan.com/getting-started.html">Next主题官方文档</a>
 <a href="https://zhuanlan.zhihu.com/p/26625249">GitHub+Hexo 搭建个人网站详细教程</a>
+<a href="https://www.jianshu.com/p/f054333ac9e6">Hexo+Next主题美化</a>
 
 ## 解决Hexo d命令报错
 
@@ -258,7 +259,16 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 
 解决方案为：git push origin master -f，强行让本地分支覆盖远程分支。
 
-8. git push origin master（上传代码到master分支）
+8. 后期执行
+```
+git add .   // 添加文件到版本库（只是添加到缓存区），.代表添加文件夹下所有文件 
+
+git commit -m "first commit" // 把添加的文件提交到版本库，并填写提交备注
+
+git push origin master  // 第一次推送后，直接使用该命令即可推送修改
+```
+即可完成仓库更新
+
 
 这样换电脑后直接克隆这个仓库里的文件，重新安装运行环境就行了
 
