@@ -251,7 +251,7 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 
 解决方案为：git push origin master -f，强行让本地分支覆盖远程分支。
 
-8. 后期执行
+8.后期执行
 ```
 git add .   // 添加文件到版本库（只是添加到缓存区），.代表添加文件夹下所有文件 
 
