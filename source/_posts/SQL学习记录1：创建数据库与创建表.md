@@ -2,7 +2,7 @@
 title: SQL学习记录1：创建数据库与创建表
 date: 2018-05-14 22:22:58
 tags: [SQL,数据库]
-categories: "学习记录"
+categories: "数据库"
 copyright: true
 top: 99
 ---
