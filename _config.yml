@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 不挂英语
+title: 不挂高数
 subtitle: 我和清华只差一个成绩优异
 description: 学习GIthub时顺便建的博客
 keywords: 编程
@@ -14,7 +14,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: https://www.buguagaoshu.com/
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -79,6 +79,12 @@ theme: next
 # Extensions
 ## Plugins: http://hexo.io/plugins/
 plugins: hexo-generate-feed
+
+# 自动生成sitemap
+sitemap:
+    path: sitemap.xml
+baidusitemap:
+    path: baidusitemap.xml
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
