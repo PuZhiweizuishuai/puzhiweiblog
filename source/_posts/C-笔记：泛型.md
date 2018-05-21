@@ -341,4 +341,157 @@ a1,     a2,     a3
 ```
 
 ## 泛型结构
-未完待续
+与泛型类相似，泛型结构可以有类型参数和约束。泛型结构的规则和条件与泛型类是一样的
+例：
+{% codeblock lang:C# %}
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.IO;
+
+
+namespace Program
+{
+    struct PieceOfData<T> //泛型结构
+    {
+        public PieceOfData(T value) { _data = value; }
+        private T _data;
+        public T Data
+        {
+            get { return _data; }
+            set { _data = value; }
+        }
+    }
+    
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var intData = new PieceOfData<int>(10);
+            var stringData = new PieceOfData<string>("Hi there.");
+
+            Console.WriteLine("intData={0}",intData.Data);
+            Console.WriteLine("stringData={0}",stringData.Data);
+            Console.ReadKey();
+        }  
+    }
+}
+{% endcodeblock %}
+
+结果
+
+```
+intData=10
+stringData=Hi there.
+```
+
+
+## 泛型委托
+泛型委托和非泛型委托非常相似，不过类型参数决定了能接受什么样的方法
+
+delegate R MyDelegate<T, R>(T value);
+R:返回类型
+<T,R>：类型参数
+
+例：
+{% codeblock lang:C# %}
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.IO;
+
+
+namespace Program
+{
+    delegate void MyDelegate<T>(T value); //泛型委托
+
+    class Simple
+    {
+        static public void PrintString(string s)  //方法匹配委托
+        {
+            Console.WriteLine(s);
+        }
+
+        static public void PrintUpperString(string s)
+        {
+            Console.WriteLine("{0}",s.ToUpper());
+        }
+    }
+    
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var myDel = new MyDelegate<string>(Simple.PrintString); //创建委托的实例
+            myDel += Simple.PrintUpperString;  //添加方法
+
+            myDel("Hi There.");            //调用委托
+            Console.ReadKey();
+        }  
+    }
+}
+{% endcodeblock %}
+
+输出：
+
+```
+Hi There.
+HI THERE.
+```
+
+## 泛型接口
+
+泛型接口允许我们编写参数和接口成员返回类型是反写类型参数的接口。泛型接口声明和非泛型接口差不多
+与其他泛型相似，实现不同类型参数的泛型接口是不同的接口
+我们可以在非泛型类型中实现泛型接口
+例：
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.IO;
+
+{% codeblock lang:C# %}
+namespace Program
+{
+    interface IMyIfc<T>     //泛型接口
+    {
+        T ReturnIt(T inValue);
+    }
+
+    class Simple : IMyIfc<int>, IMyIfc<string> //非泛型类
+    {
+        public int ReturnIt(int inValue)
+        {
+            return inValue;
+        }
+
+        public string ReturnIt(string inValue)
+        {
+            return inValue;
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Simple trivial = new Simple();
+            Console.WriteLine(trivial.ReturnIt(5));
+            Console.WriteLine(trivial.ReturnIt("Hi there."));
+            Console.ReadKey();
+        }  
+    }
+}
+{% endcodeblock %}
+
+
+**泛型接口的实现必须唯一**
+**实现泛型类型的接口时，必须保证类型实参组合不会再类型中产生两个重复的接口**
+
+
+#END
+
+
